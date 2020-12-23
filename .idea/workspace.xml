@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ecd1b1e-5391-466a-a43f-120f334f295f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dartTwitterAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dartTwitterAPI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/UI/Tweet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/UI/Tweet.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utlils/resources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utlils/resources.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utlils/twitter_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utlils/twitter_api.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

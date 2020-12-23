@@ -56,6 +56,71 @@ class TwitterApi{
 
 
 
+  Future< List<Map<dynamic, dynamic>> > getTwitterTimeline(
+      {String handle , int count,}) async{
+
+
+
+    Future twitterRequest = api.getTwitterRequest(
+      // Http Method
+      "GET",
+      // Endpoint you are trying to reach
+      "statuses/user_timeline.json",
+      // The options for the request
+      options: {
+        "screen_name": handle,
+        "count": "$count",
+        "trim_user": "true",
+        "tweet_mode": "extended", // Used to prevent truncating tweets
+      },
+    );
+
+
+
+    // Wait for the future to finish
+    var res = await twitterRequest;
+
+    // Print off the response
+
+    // Convert the string response into something more useable
+    List<Map<dynamic,dynamic>> tweets = json.decode(res.body);
+    return tweets;
+  }
+
+
+
+
+
+  Future<Map<String,dynamic>> getFollowers({String handle, int count}) async{
+
+    Future twitterRequest = api.getTwitterRequest(
+      // Http Method
+      "GET",
+      // Endpoint you are trying to reach
+      "/friends/list.json",
+      // "/followers/ids.json",
+      // The options for the request
+      options: {
+        "screen_name": handle,
+        "count": "$count",
+        "trim_user": "true",
+        "tweet_mode": "extended", // Used to prevent truncating tweets
+      },
+    );
+
+    // Wait for the future to finish
+    var res = await twitterRequest;
+
+    // Convert the string response into something more useable
+    Map<String, dynamic> t = json.decode(res.body);
+
+    return t;
+  }
+
+
+
+
+
 }
 
 

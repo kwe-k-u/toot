@@ -174,7 +174,6 @@ Accounts and users
         GET followers/ids
         GET followers/list
         GET friends/ids
-        GET friends/list
         GET friendships/incoming
         GET friendships/lookup
         GET friendships/no_retweets/ids
