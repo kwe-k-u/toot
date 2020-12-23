@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c17fdfe2-8127-43f7-aa59-1205d5bcc0a1" name="Default Changelist" comment="" />
+    <list default="true" id="9ecd1b1e-5391-466a-a43f-120f334f295f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dartTwitterAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dartTwitterAPI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/example.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/example.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Objects/TwitterPostTemp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Objects/TwitterPostTemp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Objects/TwitterUserTemp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Objects/TwitterUserTemp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/UI/Tweet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/UI/Tweet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utlils/resources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utlils/resources.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1m2MF1mTPbh8LkL7O2MA5Q3s3qT" />
+  <component name="ProjectId" id="1m2R98ECcQHFGiK8K2G31k8Xg5l" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,7 +29,10 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -29,12 +40,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c17fdfe2-8127-43f7-aa59-1205d5bcc0a1" name="Default Changelist" comment="" />
-      <created>1608687124086</created>
+      <changelist id="9ecd1b1e-5391-466a-a43f-120f334f295f" name="Default Changelist" comment="" />
+      <created>1608689544096</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1608687124086</updated>
+      <updated>1608689544096</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1608689956388">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1608689956388" />
   </component>
 </project>

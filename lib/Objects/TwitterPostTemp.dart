@@ -1,5 +1,7 @@
-import 'package:twitter_tweets_ui/Objects/TwitterUserTemp.dart';
-import 'package:twitter_tweets_ui/resources.dart';
+
+
+import 'package:twitter_api/Objects/TwitterUserTemp.dart';
+import 'package:twitter_api/utlils/resources.dart';
 
 class TwitterPostTemp{
   String _idString;

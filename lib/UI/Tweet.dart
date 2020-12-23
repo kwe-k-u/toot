@@ -1,9 +1,10 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:twitter_tweets_ui/Objects/TwitterPostTemp.dart';
-import 'package:twitter_tweets_ui/resources.dart';
+import 'package:twitter_api/Objects/TwitterPostTemp.dart';
+import 'package:twitter_api/utlils/resources.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class TweetWidget extends StatelessWidget {
 

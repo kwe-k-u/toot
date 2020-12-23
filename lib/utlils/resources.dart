@@ -3,7 +3,8 @@
 
 import 'dart:convert';
 
-import 'package:twitter_api/twitter_api.dart';
+import 'package:twitter_api/utlils/twitter_api.dart';
+
 
 List<String> _months = ["Jan", "Feb",	"Mar", 	"Apr",	"May", 	"June", 	"July",
   "Aug",	"Sept",	"Oct", 	"Nov",	"Dec"];
