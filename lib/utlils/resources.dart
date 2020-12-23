@@ -61,39 +61,6 @@ String statText(dynamic data){
 
 
 
-///Returns a json object for the twitter user that matches the [id]
-Future<Map<String,dynamic>> findUser(String id) async{
-  var au = new twitterApi(
-    consumerKey: "NxaAqeLwbd3bI0of36MF5sjs3",
-    consumerSecret: "1Pp0BWpGeHXwLNCLGSC4SkNPkyZKCV2rWjv55LjD2PZ81WqAxN",
-    token: "721809764-mzwYMd8R89NajMboUuZ6YZkBuCkDlFcP8YzDg3Qv",
-    tokenSecret: "M9QxNtnp6wuaLN27oSQtQ0coR6vv8e8ETRKuTygMGPXt6",
-  );
-
-  Future twitterRequest = au.getTwitterRequest(
-    // Http Method
-    "GET",
-    // Endpoint you are trying to reach
-    "/users/lookup.json",
-    // The options for the request
-    options: {
-      "user_id": id,
-    },
-  );
-
-  // Wait for the future to finish
-  var res = await twitterRequest;
-
-  // Print off the response
-
-  // Convert the string response into something more useable
-  dynamic t = json.decode(res.body);
-
-  // for (Map<dynamic, dynamic> map in t){
-  //   // print("asdf t is $map");
-  // }
-  return Map<String,dynamic>.of(t[0]);
-}
 
 
 
@@ -139,3 +106,107 @@ String timeCreated(DateTime date){
 
   return period;
 }
+
+
+
+//todo list of endpoints
+/*
+    urate a collection of Tweets
+        GET collections/entries
+        GET collections/list
+        GET collections/show
+        POST collections/create
+        POST collections/destroy
+        POST collections/entries/add
+        POST collections/entries/curate
+        POST collections/entries/move
+        POST collections/entries/remove
+        POST collections/update
+    Filter realtime Tweets
+        POST statuses/filter
+    Get Tweet timelines
+        GET statuses/home_timeline
+        GET statuses/mentions_timeline
+        GET statuses/user_timeline
+    Post, retrieve, and engage with Tweets
+        GET favorites/list
+        GET statuses/lookup
+        GET statuses/oembed
+        GET statuses/retweeters/ids
+        GET statuses/retweets/:id
+        GET statuses/retweets_of_me
+        GET statuses/show/:id
+        POST favorites/create
+        POST favorites/destroy
+        POST statuses/destroy/:id
+        POST statuses/retweet/:id
+        POST statuses/unretweet/:id
+        POST statuses/update
+        POST statuses/update_with_media (deprecated)
+    Sample realtime Tweets
+        GET statuses/sample
+    Search Tweets
+        GET search/tweets
+
+Accounts and users
+
+    Create and manage lists
+        GET lists/list
+        GET lists/members
+        GET lists/members/show
+        GET lists/memberships
+        GET lists/ownerships
+        GET lists/show
+        GET lists/statuses
+        GET lists/subscribers
+        GET lists/subscribers/show
+        GET lists/subscriptions
+        POST lists/create
+        POST lists/destroy
+        POST lists/members/create
+        POST lists/members/create_all
+        POST lists/members/destroy
+        POST lists/members/destroy_all
+        POST lists/subscribers/create
+        POST lists/subscribers/destroy
+        POST lists/update
+    Follow, search, and get users
+        GET followers/ids
+        GET followers/list
+        GET friends/ids
+        GET friends/list
+        GET friendships/incoming
+        GET friendships/lookup
+        GET friendships/no_retweets/ids
+        GET friendships/outgoing
+        GET friendships/show
+        GET users/search
+        GET users/show
+        POST friendships/create
+        POST friendships/destroy
+        POST friendships/update
+    Manage account settings and profile
+        GET account/settings
+        GET account/verify_credentials
+        GET saved_searches/list
+        GET saved_searches/show/:id
+        GET users/profile_banner
+        POST account/remove_profile_banner
+        POST account/settings
+        POST account/update_profile
+        POST account/update_profile_banner
+        POST account/update_profile_image
+        POST saved_searches/create
+        POST saved_searches/destroy/:id
+    Mute, block, and report users
+        GET blocks/ids
+        GET blocks/list
+        GET mutes/users/ids
+        GET mutes/users/list
+        POST blocks/create
+        POST blocks/destroy
+        POST mutes/users/create
+        POST mutes/users/destroy
+        POST users/report_spam
+
+ */

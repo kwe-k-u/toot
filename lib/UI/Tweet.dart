@@ -88,7 +88,8 @@ class TweetWidget extends StatelessWidget {
 
                 IconButton(
                     icon: Icon(Icons.share),
-                    onPressed: (){}), //todo add share option
+                    onPressed: (){
+                    }), //todo add share option
 
                 Spacer(),
               ],

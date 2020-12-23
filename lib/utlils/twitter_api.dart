@@ -8,11 +8,83 @@ import 'package:http/http.dart';
 /// 
 /// The link for the implementation rules can be found here:
 /// https://developer.twitter.com/en/docs/basics/authentication/guides/authorizing-a-request
-class twitterApi {
+class TwitterApi{
+  //todo expansion for version 2 api
+  _Api api;
+  /// This class is used to access the twitter api
+  ///
+  /// The link for the implementation rules can be found here:
+  /// https://developer.twitter.com/en/docs/basics/authentication/guides/authorizing-a-request
+  ///
+  /// [consumerKey], [consumerSecret], [token], and [tokenSecret] come from the
+  /// link above. They are unique for each app and user. You will need to generate
+  /// your own and pass them in when creating the TwitterOauth object.
+  TwitterApi({consumerKey, consumerSecret, token, tokenSecret}) {
+    this.api._oauth_consumer_key = consumerKey;
+    this.api._oauth_token = token;
+    this.api._consumerSecret = consumerSecret;
+    this.api._tokenSecret = tokenSecret;
+  }
+
+
+  ///Returns a json object for the twitter user that matches the [id]
+  Future<Map<String,dynamic>> userLookup(String id) async{
+
+    Future twitterRequest = api.getTwitterRequest(
+      // Http Method
+      "GET",
+      // Endpoint you are trying to reach
+      "/users/lookup.json",
+      // The options for the request
+      options: {
+        "user_id": id,
+      },
+    );
+
+    // Wait for the future to finish
+    var res = await twitterRequest;
+
+    // Print off the response
+
+    // Convert the string response into something more useable
+    dynamic t = json.decode(res.body);
+
+    return Map<String,dynamic>.of(t[0]);
+  }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class _Api {
   // These 7 are the oauth values needed, spelled like they are
   /// This is the consumer key from twitter
   var _oauth_consumer_key; //ignore: non_constant_identifier_names
-  /// This is a unique id given to a request that twitter can use to prevent 
+  /// This is a unique id given to a request that twitter can use to prevent
   /// the same request from being sent twice. It is automatically generated
   var _oauth_nonce; //ignore: non_constant_identifier_names
   /// This is the request signature twitter requires
@@ -106,92 +178,6 @@ class twitterApi {
     0x7E, // ~
   ];
 
-  /// This class is used to access the twitter api
-  /// 
-  /// The link for the implementation rules can be found here:
-  /// https://developer.twitter.com/en/docs/basics/authentication/guides/authorizing-a-request
-  /// 
-  /// [consumerKey], [consumerSecret], [token], and [tokenSecret] come from the
-  /// link above. They are unique for each app and user. You will need to generate
-  /// your own and pass them in when creating the TwitterOauth object.
-  twitterApi({consumerKey, consumerSecret, token, tokenSecret}) {
-    this._oauth_consumer_key = consumerKey;
-    this._oauth_token = token;
-    this._consumerSecret = consumerSecret;
-    this._tokenSecret = tokenSecret;
-  }
-
-  /// This function makes the twitter request based on the options
-  /// 
-  /// Accepts a String [method] which is the REST method (GET, POST...) of the
-  /// request being made. The request is made to a String [url] which is the 
-  /// base url of the request. Finally there is a map [options] which holds
-  /// all of the [options] of the request being made. [timeout] is the time before
-  /// the request is timed out if it is not completed in that time.
-  /// 
-  /// This is the where the infomartion for this method comes from:
-  /// https://developer.twitter.com/en/docs/basics/authentication/guides/creating-a-signature
-  /// 
-  /// The twitter developer website also goes into detail about [options] that can
-  /// be applied. These [options] are of type Map<String, String>.
-  getTwitterRequest(String method, String url, {Map<String, String> options, int timeout = 10}) async {
-    if(options == null) options = {};
-
-    // Create the nonce
-    _oauth_nonce = _generateNonce();
-    // Get the current timestamp. Convert from milliseconds to seconds
-    _oauth_timestamp = (new DateTime.now().millisecondsSinceEpoch/1000).floor().toString();
-    // Get the signature
-    _oauth_signature = _generateSignature(method, url, options);
-
-    // Get the authentication headers
-    var authHeader = _getOauthHeader();
-
-    // The response from the request
-    Future response;
-
-    // Add a post and get option
-    if(method.toUpperCase() == "GET")
-    {
-      // Make a request with a payload and a header
-      // The payload is an https request with api.twitter.com as the website
-      // /1.1/ + url is the path from the base url to the endpoint we're trying 
-      // to reach
-      // options are the options being sent to the endpoint
-      // The headers handle the authentication
-      // The timeout makes sure that if something goes wrong, the app doesnt 
-      // hang forever
-      response = get(
-        Uri.https(
-          "api.twitter.com", 
-          "/1.1/" + url, 
-          options
-        ), 
-        headers: {
-          "Authorization": authHeader,
-          "Content-Type": "application/json"
-        }
-      ).timeout(Duration(seconds: timeout));    
-    }
-    // Repeat for POST
-    else if(method.toUpperCase() == "POST")
-    {
-      response = post(
-        Uri.https(
-          "api.twitter.com", 
-          "/1.1/" + url, 
-          options
-        ), 
-        headers: {
-          "Authorization": authHeader,
-          "Content-Type": "application/json"
-        }
-      ).timeout(Duration(seconds: timeout));    
-    }
-
-    // Return the future
-    return response;
-  }
 
 
   /// Function to get a completed header for authorising a request to twitter
@@ -228,7 +214,7 @@ class twitterApi {
     return singleDST;
   }
 
-  
+
   /// This function will create a signature for the request
   _generateSignature(method, url, opt) {
 
@@ -292,7 +278,7 @@ class twitterApi {
     return base64Url.encode(digest.bytes);
   }
 
-  /// This function will percent encode [val] accoring to twitters rules 
+  /// This function will percent encode [val] accoring to twitters rules
   /// specified here:
   /// https://developer.twitter.com/en/docs/basics/authentication/guides/percent-encoding-parameters
   _percentEncode(String val) {
@@ -310,7 +296,7 @@ class twitterApi {
       // Otherwise, add it to the output
       if(!_percentEncodeValues.contains(char)) {
         // Add a % to the output
-        // output += "%"; 
+        // output += "%";
         output += String.fromCharCode(0x25);
         // convert char to a string representing the hexidecimal of char
         // Get the specific byte of the string that we want to use
@@ -344,5 +330,79 @@ class twitterApi {
     var strippedNonce = encodedNonce.replaceAll(new RegExp(r'[^a-zA-Z]'), '');
 
     return strippedNonce;
+  }
+
+
+
+  /// This function makes the twitter request based on the options
+  ///
+  /// Accepts a String [method] which is the REST method (GET, POST...) of the
+  /// request being made. The request is made to a String [url] which is the
+  /// base url of the request. Finally there is a map [options] which holds
+  /// all of the [options] of the request being made. [timeout] is the time before
+  /// the request is timed out if it is not completed in that time.
+  ///
+  /// This is the where the infomartion for this method comes from:
+  /// https://developer.twitter.com/en/docs/basics/authentication/guides/creating-a-signature
+  ///
+  /// The twitter developer website also goes into detail about [options] that can
+  /// be applied. These [options] are of type Map<String, String>.
+  getTwitterRequest(String method, String url, {Map<String, String> options, int timeout = 10}) async {
+    if(options == null) options = {};
+
+    // Create the nonce
+    _oauth_nonce = _generateNonce();
+    // Get the current timestamp. Convert from milliseconds to seconds
+    _oauth_timestamp = (new DateTime.now().millisecondsSinceEpoch/1000).floor().toString();
+    // Get the signature
+    _oauth_signature = _generateSignature(method, url, options);
+
+    // Get the authentication headers
+    var authHeader = _getOauthHeader();
+
+    // The response from the request
+    Future response;
+
+    // Add a post and get option
+    if(method.toUpperCase() == "GET")
+    {
+      // Make a request with a payload and a header
+      // The payload is an https request with api.twitter.com as the website
+      // /1.1/ + url is the path from the base url to the endpoint we're trying
+      // to reach
+      // options are the options being sent to the endpoint
+      // The headers handle the authentication
+      // The timeout makes sure that if something goes wrong, the app doesnt
+      // hang forever
+      response = get(
+          Uri.https(
+              "api.twitter.com",
+              "/1.1/" + url,
+              options
+          ),
+          headers: {
+            "Authorization": authHeader,
+            "Content-Type": "application/json"
+          }
+      ).timeout(Duration(seconds: timeout));
+    }
+    // Repeat for POST
+    else if(method.toUpperCase() == "POST")
+    {
+      response = post(
+          Uri.https(
+              "api.twitter.com",
+              "/1.1/" + url,
+              options
+          ),
+          headers: {
+            "Authorization": authHeader,
+            "Content-Type": "application/json"
+          }
+      ).timeout(Duration(seconds: timeout));
+    }
+
+    // Return the future
+    return response;
   }
 }
