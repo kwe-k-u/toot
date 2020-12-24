@@ -15,18 +15,19 @@ class TweetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //todo get tweet url then let tapping on tweet redirect to twitter
     return GestureDetector(
       onTap: () async{
-        if (await canLaunch(temp.getTweetURL())) {
-        await launch(
-        temp.getTweetURL(),
-        forceSafariVC: false,
-        forceWebView: false,
-        headers: <String, String>{'my_header_key': 'my_header_value'},
-        );
-        } else {
-        throw 'Could not launch ${temp.getTweetURL()}';
-        }
+        // if (await canLaunch(temp.getTweetURL())) {
+        // await launch(
+        // temp.getTweetURL(),
+        // forceSafariVC: false,
+        // forceWebView: false,
+        // headers: <String, String>{'my_header_key': 'my_header_value'},
+        // );
+        // } else {
+        // throw 'Could not launch ${temp.getTweetURL()}';
+        // }
 
       },
         child: Column(
@@ -55,14 +56,16 @@ class TweetWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Spacer(),
-                Row(
-                  children: [
-                    IconButton(
-                        icon: Icon(Icons.chat_bubble_outline),
-                        onPressed: (){}),
-                    Text(statText(temp.getReplyCount()))
-                  ],
-                ),
+
+                //todo add when we can get the number of comments
+                // Row(
+                //   children: [
+                //     IconButton(
+                //         icon: Icon(Icons.chat_bubble_outline),
+                //         onPressed: (){}),
+                //     Text(statText(temp.getReplyCount()))
+                //   ],
+                // ),
 
                 Row(
                   children: [

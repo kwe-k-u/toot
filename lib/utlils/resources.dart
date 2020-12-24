@@ -79,7 +79,7 @@ String timeCreated(DateTime date){
       if (now.hour == date.hour)
         period = "${now.minute - date.minute} min";
       else
-        period = "${date.hour - now.hour}h";
+        period = "${now.hour - date.hour}h";
 
     } else if (date.isAfter(now.subtract(Duration(days:  7)))){
       //If the entered date was within a week ago

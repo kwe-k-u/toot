@@ -41,7 +41,6 @@ class TwitterPostTemp{
     //Runs if the tweet has been retweeted. helps replace authenticated user metrics with original tweet metrics
     if (map["retweeted"]) {
       setDatePosted(map["retweeted_status"]["created_at"]);
-      // print("asdf created 1 ${map["retweeted_status"]["created_at"]}");
 
       setTweetId(map["retweeted_status"]["id"]);
       setRetweetedStatus(map["retweeted_status"]["retweeted"]);
@@ -77,6 +76,7 @@ class TwitterPostTemp{
       setFavouriteStatus(map["favorited"]);
       setFavouriteCount(map["favorite_count"]);
       setRetweetCount(map["retweet_count"]);
+      // setTweetURL("url");
       setReplyCount(map["reply_count"]);
       setUser(TwitterUserTemp().createFromMap(
           Map<String, dynamic>.from(map["user"])));

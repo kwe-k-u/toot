@@ -24,8 +24,6 @@ class TwitterUserTemp{
   ///Creates a [TwitterUserTemp] from a json object [map]
   TwitterUserTemp createFromMap(Map<String,dynamic> map) {
     if (map.keys.length <3) {
-      findUser(map["id"].toString()).then((value) {
-        map = value;
 
         setUserHandle(map["screen_name"]);
         setUserId(map["id"].toString());
@@ -39,7 +37,7 @@ class TwitterUserTemp{
         setTweetCount(map["statuses_count"]);
         setProfileImageUrl(map["profile_image_url"]);
         // setCreatedDate(convertTwitterDate(map["created_at"]));
-      });
+      // });
 
       return this;
 
