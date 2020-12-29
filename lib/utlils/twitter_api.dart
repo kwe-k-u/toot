@@ -55,18 +55,28 @@ class TwitterApi{
 
     return Map<String,dynamic>.of(t[0]);
   }
-  Future<Map<String,dynamic>> getUserData2(String id) async{
+
+
+
+
+
+
+
+
+  ///Posts a tweet to twitter
+  void postTweet({String status}) async{
 
     Future twitterRequest = api.getTwitterRequest(
       // Http Method
-      "GET",
+      "POST",
       // Endpoint you are trying to reach
-      "/users/lookup.json",
+      "/statuses/update.json",
       // The options for the request
       options: {
-        "id": id,
+        "status": status,
       },
     );
+
 
     // Wait for the future to finish
     Response res = await twitterRequest;
@@ -76,7 +86,6 @@ class TwitterApi{
     // Convert the string response into something more useable
     dynamic t = json.decode(res.body);
 
-    return Map<String,dynamic>.of(t[0]);
   }
 
 
