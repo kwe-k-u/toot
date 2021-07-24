@@ -35,7 +35,7 @@ class TwitterUserTemp{
         setFollowingCount(map["friends_count"]);
         setVerifiedStatus(map["verified"]);
         setTweetCount(map["statuses_count"]);
-        setProfileImageUrl(map["profile_image_url"]);
+        setProfileImageUrl(map["profile_image_url_https"]);
         // setCreatedDate(convertTwitterDate(map["created_at"]));
       // });
 
@@ -52,7 +52,7 @@ class TwitterUserTemp{
       setFollowingCount(map["friends_count"]);
       setVerifiedStatus(map["verified"]);
       setTweetCount(map["statuses_count"]);
-      setProfileImageUrl(map["profile_image_url"]);
+      setProfileImageUrl(map["profile_image_url_https"]);
       // setCreatedDate(convertTwitterDate(map["created_at"]));
 
       return this;

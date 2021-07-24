@@ -1,8 +1,6 @@
 import 'dart:math';
-import 'dart:core';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
 /// This class is used to access the twitter api
@@ -30,38 +28,28 @@ class TwitterApi{
     this.api._tokenSecret = tokenSecret;
   }
 
-//todo remove getUserData after the firebase database can store userID and not screen names
-  ///Returns a json object for the twitter user that matches the [screenName]
-  Future<Map<String,dynamic>> getUserData(String screenName) async{
+
+
+
+
+///Performs a 3 legged oauth with twitter to obtain a user's access token
+  ///Returns as a map with keys 'customerkey' and '
+Future<Map<String,String>> Oauth()async{
+    Map<String,String> _key;
 
     Future twitterRequest = api.getTwitterRequest(
-      // Http Method
-      "GET",
-      // Endpoint you are trying to reach
-      "/users/lookup.json",
-      // The options for the request
-      options: {
-        "screen_name": screenName,
-      },
+        // Http Method
+        "POST",
+        // Endpoint you are trying to reach
+        "oauth/request_token",
+        options: { // The options for the request
+        "oauth_callback": "https://www.github.com/kwe_k_u"
+        }
     );
 
-    // Wait for the future to finish
-    Response res = await twitterRequest;
 
-    // Print off the response
-
-    // Convert the string response into something more useable
-    dynamic t = json.decode(res.body);
-
-    return Map<String,dynamic>.of(t[0]);
-  }
-
-
-
-
-
-
-
+    return _key;
+}
 
   ///Posts a tweet to twitter
   void postTweet({String status}) async{
@@ -92,8 +80,7 @@ class TwitterApi{
 
 
 
-  Future< List<Map<String, dynamic>> > getTwitterTimeline(
-      {String handle , int count = 100,}) async{
+  Future< List<Map<String, dynamic>> > getTwitterTimeline({String handle , int count = 100,}) async{
 
 
 
@@ -121,7 +108,6 @@ class TwitterApi{
     // Convert the string response into something more useable
     List<dynamic> list = json.decode(res.body);
     List<Map<String,dynamic>> tweets = [];
-    print("asdf ${list[0].runtimeType}");
     for (var obj in list) {
       tweets.add(Map<String, dynamic>.from(obj));
     }
@@ -137,16 +123,42 @@ class TwitterApi{
   }
 
 
-
-
-
-  Future<Map<String,dynamic>> getFollowers({String handle, int count}) async{
+//todo remove getUserData after the firebase database can store userID and not screen names
+  ///Returns a json object for the twitter user that matches the [screenName]
+  Future<Map<String,dynamic>> getUserData(String screenName) async{
 
     Future twitterRequest = api.getTwitterRequest(
       // Http Method
       "GET",
       // Endpoint you are trying to reach
-      "/friends/list.json",
+      "/users/lookup.json",
+      // The options for the request
+      options: {
+        "screen_name": screenName,
+      },
+    );
+
+    // Wait for the future to finish
+    Response res = await twitterRequest;
+
+    // Print off the response
+
+    // Convert the string response into something more useable
+    dynamic t = json.decode(res.body);
+
+    return Map<String,dynamic>.of(t[0]);
+  }
+
+
+
+
+  Future<List<Map<String,dynamic>>> getFollowers({String handle, int count}) async{
+
+    Future twitterRequest = api.getTwitterRequest(
+      // Http Method
+      "GET",
+      // Endpoint you are trying to reach
+      "/followers/list.json",
       // "/followers/ids.json",
       // The options for the request
       options: {
@@ -161,7 +173,13 @@ class TwitterApi{
     var res = await twitterRequest;
 
     // Convert the string response into something more useable
-    Map<String, dynamic> t = json.decode(res.body);
+    List<dynamic> _t = json.decode(res.body)["users"];
+    List<Map<String,dynamic>> t = [];
+    for (var i in _t){
+      t.add(i);
+    }
+
+
 
     return t;
   }
