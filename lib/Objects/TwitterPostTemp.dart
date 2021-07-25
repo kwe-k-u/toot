@@ -1,32 +1,34 @@
 
 
+import 'package:tweet_ui/models/api/tweet.dart';
 import 'package:twitter_api/Objects/TwitterUserTemp.dart';
 import 'package:twitter_api/utlils/resources.dart';
 
 class TwitterPostTemp{
-  String _idString;
-  TwitterUserTemp _user;
-  String _tweetText;
-  DateTime _createdAt;
-  String _tweetUrl;
-  bool _isTruncated; /// boolean to show if the tweet text was cut because the tweet was longer than 140 characters
-  bool _isFavourite;
-  bool _isRetweeted;
-  bool _isPossiblySensitive;
-  List<dynamic> _tweetCharacterRange;
-  String _mediaType;
-  List<String> _media = [];
+  String? _idString;
+  TwitterUserTemp? _user;
+  String? _tweetText;
+  DateTime? _createdAt;
+  String? _tweetUrl;
+  bool? _isTruncated; /// boolean to show if the tweet text was cut because the tweet was longer than 140 characters
+  bool? _isFavourite;
+  bool? _isRetweeted;
+  bool? _isPossiblySensitive;
+  List<dynamic>? _tweetCharacterRange;
+  String? _mediaType;
+  List<String?> _media = [];
 
-  String _filterLevel;
-  String _language;
+  String? _filterLevel;
+  String? _language;
   // matching rules
 
   //extended entities
   //entities
-  int _favouriteCount;
-  int _retweetCount;
-  int _replyCount;
-  int _quoteCount;
+  int? _favouriteCount;
+  int? _retweetCount;
+  int? _replyCount;
+  int? _quoteCount;
+
 
 
 
@@ -115,7 +117,7 @@ class TwitterPostTemp{
 
 
   ///Sets the number of characters of in [_tweetText] to the range [range]
-  void setTweetCharacterRange(List<dynamic> range){
+  void setTweetCharacterRange(List<dynamic>? range){
     this._tweetCharacterRange = range;
   }
   
@@ -126,26 +128,26 @@ class TwitterPostTemp{
   }
 
   ///Sets the text of [TwitterPostTemp] to [text]
-  void setTweetText(String text){
+  void setTweetText(String? text){
     this._tweetText = text; //todo add checker to keep length 140 characters
   }
 
   /// Sets the
-  void setFavouriteStatus(bool status){
+  void setFavouriteStatus(bool? status){
     this._isFavourite = status;
   }
 
-  void setRetweetedStatus(bool status){
+  void setRetweetedStatus(bool? status){
     this._isRetweeted = status;
   }
 
   ///Sets the possibly sensitive status of [TwitterPostTemp] to [status]
-  void setIsSensitiveStatus(bool status){
+  void setIsSensitiveStatus(bool? status){
     this._isPossiblySensitive = status;
   }
 
   ///Sets the truncated status of [TwitterPostTemp] to [status]
-  void setTruncatedStatus(bool status){
+  void setTruncatedStatus(bool? status){
     this._isTruncated = status;
   }
 
@@ -155,18 +157,18 @@ class TwitterPostTemp{
   }
 
   ///Sets the number of favourites of [TwitterPostTemp] to [count]
-  void setFavouriteCount(int count){
+  void setFavouriteCount(int? count){
     this._favouriteCount = count;
   }
 
 ///Sets the number of retweets of [TwitterPostTemp] to [count]
-  void setRetweetCount(int count){
+  void setRetweetCount(int? count){
     this._retweetCount = count;
   }
 
 
   ///Sets the number of replies to [TwitterPostTemp] to [count]
-  void setReplyCount(int count){
+  void setReplyCount(int? count){
     this._replyCount = count;
   }
 
@@ -178,7 +180,7 @@ class TwitterPostTemp{
 
 
   ///Sets the language of [TwitterPostTemp] to [lang]
-  void setLanguage(String lang){
+  void setLanguage(String? lang){
     this._language = lang;
   }
 
@@ -189,7 +191,7 @@ class TwitterPostTemp{
   }
 
 
-  void setMedia(String url, String type){
+  void setMedia(String? url, String? type){
     this._mediaType = type;
     this._media.add(url);
   }
@@ -204,78 +206,78 @@ class TwitterPostTemp{
   //                    GETTERS
 
   ///Returns the date [TwitterPostTemp] was posted on Twitter
-  DateTime getDateCreated()
+  DateTime? getDateCreated()
   => this._createdAt;
 
 
 ///Returns the user who posted [TwitterPostTemp] as a [TwitterUserTemp] object
-  TwitterUserTemp getUser(){
+  TwitterUserTemp? getUser(){
     return this._user;
   }
 
 
   ///Returns the id of the tweet [TwitterPostTemp] as a string
-  String getTweetId()
+  String? getTweetId()
   => this._idString;
 
 
   ///Returns the text of the tweet
-  String getTweetText(){
+  String? getTweetText(){
     return this._tweetText;
   }
 
 
   ///Returns a boolean to show the truncation status of [TwitterPostTemp]
-  bool isTruncated()
+  bool? isTruncated()
   => this._isTruncated;
 
   ///Returns a boolean to show the if the post has been marked as favourite
-  bool isFavourite(){
+  bool? isFavourite(){
     return this._isFavourite;
   }
 
   ///Returns the url of the tweet [TwitterPostTemp]
-  String getTweetURL()
+  String? getTweetURL()
   => this._tweetUrl;
 
   ///Returns a boolean to show if the tweet [TwitterPostTemp] has been retweeted
-  bool isRetweeted()
+  bool? isRetweeted()
   => this._isRetweeted;
 
 
   ///Returns a boolean to show if the tweet [TwitterPostTemp] contains sensitive material
-  bool isSensitive()
+  bool? isSensitive()
   => this._isPossiblySensitive;
 
 
   ///Returns the number of likes the tweet has
-  int getFavouriteCount()
+  int? getFavouriteCount()
   => this._favouriteCount;
 
   ///Returns the number of retweets the tweet has
-  int getRetweetCount()
+  int? getRetweetCount()
   => this._retweetCount;
 
   ///Returns the number of comments or replies the tweet has
-  int getReplyCount()
+  int? getReplyCount()
   => this._replyCount;
 
   ///Returns the number of quoted tweets the tweet has
-  int getQuoteCount()
+  int? getQuoteCount()
   => this._quoteCount;
 
 
   ///Returns teh filter level of the tweet as a string
-  String getFilterLevel()
+  String? getFilterLevel()
       => this._filterLevel;
 
   ///Returns the language of the tweet as shorthand String
-  String getLanguage()
+  String? getLanguage()
   => this._language;
   
 
   ///Returns a list showing the number of characters in the tweet
-  List<dynamic> getTweetCharacterRange()
+  List<dynamic>? getTweetCharacterRange()
   => this._tweetCharacterRange;
 
 
@@ -284,17 +286,17 @@ class TwitterPostTemp{
 
 
 
-  String getMediaType()
+  String? getMediaType()
   => this._mediaType;
 
 
-  List<String> getMediaUrl()
+  List<String?> getMediaUrl()
   => this._media;
 
 
   ///Returns a json object containing all the attributes of [TwitterPostTemp]
-  Map<String,dynamic> getMap(){
-    Map<String,dynamic> map;
+  Map<String,dynamic>? getMap(){
+    Map<String,dynamic>? map;
 
 
 

@@ -4,20 +4,20 @@
 import 'package:twitter_api/utlils/resources.dart';
 
 class TwitterUserTemp{
-  String _userHandle;
-  String _userAccountName;
-  String __profileUrl;
-  String _userId;
-  DateTime _createAt;
-  String _description;
-  String _location; //of type location
-  String _profileImageUrl;
-  bool _isProtected;
-  bool _isVerified;
-  int _followerCount; //these come from public_metrics
-  int _followingCount;
-  int _listedCount;
-  int _tweetCount;
+  String? _userHandle;
+  String? _userAccountName;
+  String? __profileUrl;
+  late String _userId;
+  DateTime? _createAt;
+  String? _description;
+  String? _location; //of type location
+  String? _profileImageUrl;
+  bool? _isProtected;
+  late bool _isVerified;
+  late int _followerCount; //these come from public_metrics
+  late int  _followingCount;
+  int? _listedCount;
+  late int _tweetCount;
   //entities
 
 
@@ -62,14 +62,14 @@ class TwitterUserTemp{
 
 
   ///Sets the account name of [TwitterUserTemp] to [name]
-  void setUserName(String name){
+  void setUserName(String? name){
     this._userAccountName = name;
   }
 
 
 
   ///Sets the user handle of [TwitterUserTemp] to [handle]
-  void setUserHandle(String handle){
+  void setUserHandle(String? handle){
     this._userHandle = handle;
   }
 
@@ -81,7 +81,7 @@ class TwitterUserTemp{
 
 
   ///Sets the url of the Twitter profile's image to [url]
-  void setProfileImageUrl(String url){
+  void setProfileImageUrl(String? url){
     this._profileImageUrl = url;
   }
 
@@ -104,7 +104,7 @@ class TwitterUserTemp{
 
 
   ///Sets the profile description of the Twitter account to [description]
-  void setDescription(String description){
+  void setDescription(String? description){
     this._description = description;
   }
 
@@ -157,7 +157,7 @@ class TwitterUserTemp{
 
   ///Returns the account handle of [TwitterUserTemp] as a string
   String getUserHandle()
-  => "@${this._userHandle}" ?? "";
+  => "@${this._userHandle}";
 
   ///Returns the account name of [TwitterUserTemp] as a string
   String getAccountName()
@@ -176,10 +176,10 @@ class TwitterUserTemp{
 
   ///Returns the Twitter account id of [TwitterUserTemp] as a string
   String getUserId()
-  => this._userId ?? "";
+  => this._userId;
 
   ///Returns the date of creation of the Twitter account of [TwitterUserTemp]
-  DateTime getDateCreated()
+  DateTime? getDateCreated()
   => this._createAt;
 
   ///Returns the description of the twitter account of [TwitterUserTemp]
@@ -199,22 +199,22 @@ class TwitterUserTemp{
 
   ///Returns a boolean to show if the twitter account is verified
   bool isVerified()
-  => this._isVerified ?? false;
+  => this._isVerified ;
 
   ///Returns the number of followers of the twitter account
-  int getFollowerCount()
+  int? getFollowerCount()
   => this._followerCount;
 
   ///Returns the number of accounts that the twitter account follows
-  int getFollowingCount()
+  int? getFollowingCount()
   => this._followingCount;
 
 
-  int getListedCount()
+  int? getListedCount()
   => this._listedCount;
 
   ///Returns the number of tweets by [TwitterUserTemp]
-  int getTweetCount()
+  int? getTweetCount()
   => this._tweetCount;
 
 

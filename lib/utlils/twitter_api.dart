@@ -19,7 +19,7 @@ class TwitterApi{
   /// [consumerKey], [consumerSecret], [token], and [tokenSecret] come from the
   /// link above. They are unique for each app and user. You will need to generate
   /// your own and pass them in when creating the TwitterOauth object.
-  TwitterApi({String consumerKey, String consumerSecret, String token, String tokenSecret}) {
+  TwitterApi({String? consumerKey, String? consumerSecret, String? token, String? tokenSecret}) {
     api = new _Api();
 
     this.api._oauth_consumer_key = consumerKey;
@@ -34,10 +34,10 @@ class TwitterApi{
 
 ///Performs a 3 legged oauth with twitter to obtain a user's access token
   ///Returns as a map with keys 'customerkey' and '
-Future<Map<String,String>> Oauth()async{
-    Map<String,String> _key;
+Future<Map<String,String>?> Oauth()async{
+    Map<String,String>? _key;
 
-    Future twitterRequest = api.getTwitterRequest(
+    Future? twitterRequest = api.getTwitterRequest(
         // Http Method
         "POST",
         // Endpoint you are trying to reach
@@ -52,9 +52,9 @@ Future<Map<String,String>> Oauth()async{
 }
 
   ///Posts a tweet to twitter
-  void postTweet({String status}) async{
+  void postTweet({String? status}) async{
 
-    Future twitterRequest = api.getTwitterRequest(
+    Future? twitterRequest = api.getTwitterRequest(
       // Http Method
       "POST",
       // Endpoint you are trying to reach
@@ -67,7 +67,7 @@ Future<Map<String,String>> Oauth()async{
 
 
     // Wait for the future to finish
-    Response res = await twitterRequest;
+    Response res = await (twitterRequest);
 
     // Print off the response
 
@@ -80,11 +80,11 @@ Future<Map<String,String>> Oauth()async{
 
 
 
-  Future< List<Map<String, dynamic>> > getTwitterTimeline({String handle , int count = 100,}) async{
+  Future< List<Map<String, dynamic>> > getTwitterTimeline({required String handle , int count = 100,}) async{
 
 
 
-    Future twitterRequest = api.getTwitterRequest(
+    Future? twitterRequest = api.getTwitterRequest(
       // Http Method
       "GET",
       // Endpoint you are trying to reach
@@ -127,7 +127,7 @@ Future<Map<String,String>> Oauth()async{
   ///Returns a json object for the twitter user that matches the [screenName]
   Future<Map<String,dynamic>> getUserData(String screenName) async{
 
-    Future twitterRequest = api.getTwitterRequest(
+    Future? twitterRequest = api.getTwitterRequest(
       // Http Method
       "GET",
       // Endpoint you are trying to reach
@@ -139,7 +139,7 @@ Future<Map<String,String>> Oauth()async{
     );
 
     // Wait for the future to finish
-    Response res = await twitterRequest;
+    Response res = await (twitterRequest);
 
     // Print off the response
 
@@ -152,9 +152,9 @@ Future<Map<String,String>> Oauth()async{
 
 
 
-  Future<List<Map<String,dynamic>>> getFollowers({String handle, int count}) async{
+  Future<List<Map<String,dynamic>>> getFollowers({String? handle, int? count}) async{
 
-    Future twitterRequest = api.getTwitterRequest(
+    Future? twitterRequest = api.getTwitterRequest(
       // Http Method
       "GET",
       // Endpoint you are trying to reach
@@ -479,7 +479,7 @@ class _Api {
   ///
   /// The twitter developer website also goes into detail about [options] that can
   /// be applied. These [options] are of type Map<String, String>.
-  getTwitterRequest(String method, String url, {Map<String, String> options, int timeout = 10}) async {
+  getTwitterRequest(String method, String url, {Map<String, String?>? options, int timeout = 10}) async {
     if(options == null) options = {};
 
     // Create the nonce
@@ -493,7 +493,7 @@ class _Api {
     var authHeader = _getOauthHeader();
 
     // The response from the request
-    Future response;
+    Future? response;
 
     // Add a post and get option
     if(method.toUpperCase() == "GET")
