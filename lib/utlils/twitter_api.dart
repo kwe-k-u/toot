@@ -78,6 +78,26 @@ Future<Map<String,String>?> Oauth()async{
 
 
 
+  ///Returns all the DM (direct messages) that the authenticated user has received
+  ///over the past 30 days
+  Future< List<Map<String,dynamic>> > getMessages() async{
+    dynamic response = await api.getTwitterRequest(
+        "GET",
+        "direct_messages/events/list.json",
+        options: {
+
+        }
+    );
+
+
+    List<dynamic> list = json.decode(response.body)['events'];
+    List<Map<String,dynamic>> messages = [];
+    for (var obj in list) {
+      messages.add(Map<String, dynamic>.from(obj));
+    }
+
+    return messages;
+  }
 
 
   Future< List<Map<String, dynamic>> > getTwitterTimeline({required String handle , int count = 100,}) async{
@@ -183,6 +203,8 @@ Future<Map<String,String>?> Oauth()async{
 
     return t;
   }
+
+
 
 
 
