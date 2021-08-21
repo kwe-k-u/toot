@@ -1,12 +1,12 @@
 
 
-import 'package:twitter_api/Objects/TwitterUserTemp.dart';
+import 'package:twitter_api/utils/models/TwitterUser.dart';
 import 'package:twitter_api/utils/resources.dart';
 
 class Tweet{
 
   late int id; ///The ID of the tweet
-  late TwitterUserTemp twitterUser;  ///The account from which the tweet was made
+  late TwitterUser twitterUser;  ///The account from which the tweet was made
   String? text; ///The string content of the tweet
   late DateTime createdAt; ///The dateTime at which the tweet was posted
   String? tweetUrl; ///The url to the tweet on Twitter //todo implement
@@ -66,20 +66,20 @@ class Tweet{
   ///Creates and returns a [Tweet] object from the json data [map]
   factory Tweet.fromMap(Map<dynamic, dynamic> map){
     return Tweet(
-      createdAt : convertTwitterDate(map["retweeted_status"]["created_at"]),
-      id : map["retweeted_status"]["id"],
-      text : map["retweeted_status"]["full_text"],
-      isTruncated : map["retweeted_status"]['truncated'],
-      isPossiblySensitive : map["retweeted_status"]["possibly_sensitive"],
-      isRetweeted : map["retweeted_status"]["retweeted"],
-      isFavourite : map["retweeted_status"]["favorited"],
-      language : map["retweeted_status"]["lang"],
-      favouriteCount : map["retweeted_status"]["favorite_count"],
-      retweetCount : map["retweeted_status"]["retweet_count"],
-      replyCount : map["retweeted_status"]["reply_count"],
-      twitterUser : TwitterUserTemp().createFromMap(
-          Map<String, dynamic>.from(map["retweeted_status"]["user"])),
-      characterRange : map["retweeted_status"]['display_text_range'],
+      createdAt : convertTwitterDate(map["created_at"]),
+      id : map["id"],
+      text : map["full_text"],
+      isTruncated : map['truncated'],
+      isPossiblySensitive : map["possibly_sensitive"],
+      isRetweeted : map["retweeted"],
+      isFavourite : map["favorited"],
+      language : map["lang"],
+      favouriteCount : map["favorite_count"],
+      retweetCount : map["retweet_count"],
+      replyCount : map["reply_count"],
+      twitterUser : TwitterUser.fromJson(
+          Map<String, dynamic>.from(map["user"])),
+      characterRange : map['display_text_range'],
       entities: map["entities"], 
         quoteCount: map["quote_count"]
     );
