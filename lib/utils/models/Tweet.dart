@@ -1,7 +1,6 @@
 
 
 import 'package:twitter_api/utils/models/TwitterUser.dart';
-import 'package:twitter_api/utils/helpers/resources.dart';
 
 class Tweet{
 
@@ -66,7 +65,7 @@ class Tweet{
   ///Creates and returns a [Tweet] object from the json data [map]
   factory Tweet.fromMap(Map<dynamic, dynamic> map){
     return Tweet(
-      createdAt : convertTwitterDate(map["created_at"]),
+      createdAt : DateTime.fromMillisecondsSinceEpoch(int.parse(map["created_at"])),
       id : map["id"],
       text : map["full_text"],
       isTruncated : map['truncated'],
