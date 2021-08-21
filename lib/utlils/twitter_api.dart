@@ -143,6 +143,13 @@ Future<Map<String,String>?> Oauth()async{
   }
 
 
+  Future<Map<String,dynamic>> verifyCredentials() async {
+    Response response = await api.getTwitterRequest("GET", "account/verify_credentials.json");
+    Map<String, dynamic> data = json.decode(response.body);
+
+    return data;
+  }
+
 //todo remove getUserData after the firebase database can store userID and not screen names
   ///Returns a json object for the twitter user that matches the [screenName]
   Future<Map<String,dynamic>> getUserData(String screenName) async{
