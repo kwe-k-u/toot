@@ -14,8 +14,8 @@ dependencies:
 
   crypto: ^3.0.1
   http: ^0.13.3
-  tweet_ui:
-    path: F:/Projects/Flutter/tweet_ui
+#  tweet_ui:
+#    path: F:/Projects/Flutter/tweet_ui
   url_launcher: ^6.0.2
 
 dev_dependencies:

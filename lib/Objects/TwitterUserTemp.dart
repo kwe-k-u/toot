@@ -1,7 +1,6 @@
 
 
 
-import 'package:twitter_api/utlils/resources.dart';
 
 class TwitterUserTemp{
   String? _userHandle;

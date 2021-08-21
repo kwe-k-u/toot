@@ -2,7 +2,7 @@
 //
 // import "package:flutter/material.dart";
 // import 'package:tweet_ui/tweet_ui.dart';
-// import 'package:twitter_api/Objects/TwitterPostTemp.dart';
+// import 'package:twitter_api/Objects/Tweet.dart';
 //
 //
 // class TweetWidget extends StatefulWidget {
