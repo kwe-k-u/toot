@@ -1,7 +1,7 @@
 
 
 import 'package:twitter_api/utils/models/TwitterUser.dart';
-import 'package:twitter_api/utils/resources.dart';
+import 'package:twitter_api/utils/helpers/resources.dart';
 
 class Tweet{
 

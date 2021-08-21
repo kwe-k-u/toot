@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ecd1b1e-5391-466a-a43f-120f334f295f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/Objects/TwitterUserTemp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Objects/TwitterUser.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utils/models/Tweet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/models/Tweet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/resources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/helpers/resources.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/twitter_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/twitter_api.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +39,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Projects\Flutter\toot\lib\utils\helpers" />
       <recent name="F:\Projects\Flutter\toot\lib\utils\models" />
     </key>
   </component>

@@ -100,7 +100,7 @@ Future<Map<String,String>?> Oauth()async{
   }
 
 
-  Future< List<Map<String, dynamic>> > getTwitterTimeline({required String handle , int count = 100,}) async{
+  Future< List<Map<String, dynamic>> > getTwitterTimeline({required String handle, int count = 100,}) async{
 
 
 
@@ -111,7 +111,7 @@ Future<Map<String,String>?> Oauth()async{
       "statuses/user_timeline.json",
       // The options for the request
       options: {
-        "screen_name": handle,
+        "screen_name" : handle,
         "count": "$count",
         "trim_user": "true",
         "tweet_mode": "extended", // Used to prevent truncating tweets
@@ -152,7 +152,8 @@ Future<Map<String,String>?> Oauth()async{
 
 //todo remove getUserData after the firebase database can store userID and not screen names
   ///Returns a json object for the twitter user that matches the [screenName]
-  Future<Map<String,dynamic>> getUserData(String screenName) async{
+  Future<Map<String,dynamic>> getUserData({String? screenName, String? id}) async{
+    assert ((screenName != null && id == null) || (screenName == null && id != null) );
 
     Future? twitterRequest = api.getTwitterRequest(
       // Http Method
@@ -160,8 +161,10 @@ Future<Map<String,String>?> Oauth()async{
       // Endpoint you are trying to reach
       "/users/lookup.json",
       // The options for the request
-      options: {
+      options:  (screenName != null) ? {
         "screen_name": screenName,
+      } : {
+        "user_id" : id
       },
     );
 
